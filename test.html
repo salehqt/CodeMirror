@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Code Editing Test</title>
+    <link rel="stylesheet" type="text/css" href="lib/codemirror.css"/>
+	<script type="text/javascript"  src="lib/codemirror.js" ></script>
+	<script type="text/javascript"  src="mode/ruby/ruby.js" ></script>
+	<script type="text/javascript"  src="mode/javascript/javascript.js" ></script>
+    <link rel="stylesheet" href="addon/lint/lint.css">
+    <script src="addon/lint/lint.js"></script>
+    <script src="addon/lint/yakand-lint.js"></script>
+
+		    <style type="text/css">
+      .CodeMirror {border: 1px solid black;}
+    </style>
+
+  </head>
+  <body>
+<textarea id="code">
+def n
+  1 + 1
+end
+
+</textarea>
+
+	<script>
+		var c = CodeMirror.fromTextArea(document.getElementById("code"), { 
+			mode: "javascript" ,
+			lineNumbers: true ,
+			gutters: ["CodeMirror-lint-markers"],
+			lintWith: CodeMirror.yakandValidator
+		});
+		var msg = document.createElement("div");
+		msg.innerHTML = "some hint";
+		//c.addLineWidget(1, msg, {coverGutter: false, noHScroll: true})
+	</script>
+  </body>
+</html>
+
